@@ -1,0 +1,34 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+      docker: 18
+  pre_build:
+    commands:
+      - pip install awscli --upgrade --user
+      - echo `aws --version`
+      - echo Installing Angular CLI
+      - npm install -g @angular/cli
+      - echo `npm --version`
+      - yarn add @angular-devkit/build-angular --dev
+      - echo `/usr/local/bin/ng v`
+      - echo `ng v`
+      - echo Entered the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - node -v
+      - echo current dir is `pwd`
+      - /usr/local/bin/ng build -c production
+      - echo current jar `ls -alrt ./dist/`
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the code to S3...
+      - echo Writing image definitions file...
+      - cd ./dist/customer-ui
+      - ls -alrt
+      - aws s3 sync . s3://ci-static-site-bucket
+      - echo Sync completed to S3

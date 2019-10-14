@@ -1,0 +1,41 @@
+[
+  {
+    "name": "api",
+    "image": "${image}",
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 8080
+      }
+    ],
+    "memory": 1024,
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "${aws_region}",
+        "awslogs-stream-prefix": "api"
+      }
+    },
+    "environment": [
+      {
+        "name": "DATABASE_SERVER",
+        "value": "${database_server}"
+      },
+      {
+        "name": "DATABASE_USER",
+        "value": "${database_user}"
+      },
+      {
+        "name": "DATABASE_PASSWORD",
+        "value": "${database_password}"
+      },
+      {
+        "name": "SERVER_PORT",
+        "value": "8080"
+      }
+    ]
+  }
+]
+

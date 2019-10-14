@@ -1,0 +1,7 @@
+region             =  "ap-southeast-1"
+domain             =  "ramanjeemishra.me.uk"
+environment        =  "ci"
+database_name      =  "customer_service"
+database_username  =  "rdsuser"
+database_password  =  "rdsuser1234"
+secret_key_base    =  "xxxxxxxxxxxxx"

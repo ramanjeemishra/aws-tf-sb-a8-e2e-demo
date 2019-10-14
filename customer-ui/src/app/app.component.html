@@ -1,0 +1,184 @@
+<div class="content">
+  <div class="card-container" fxLayout="row" fxLayoutAlign="center">
+    <form class="example-form">
+      <mat-card fxFlex="800px">
+        <mat-card-title class="card highlight-card card-medium">Add New Customer</mat-card-title>
+        <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="First name" required>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Middle name">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Last Name" required>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <mat-select placeholder="Gender" required>
+                    <mat-option value="M">Male</mat-option>
+                    <mat-option value="F">Female</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <mat-select placeholder="Country of Birth" required>
+                    <mat-option value="SG">Singapore</mat-option>
+                    <mat-option value="IN">India</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <mat-select placeholder="Country of Residence" required>
+                    <mat-option value="SG">Singapore</mat-option>
+                    <mat-option value="IN">India</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <mat-select placeholder="Segment" required>
+                    <mat-option value="RETAIL">Retails        </mat-option>
+                    <mat-option value="PRIVATE">Private         </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                  <mat-label></mat-label>
+                </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <span matPrefix>+65&nbsp;</span>
+                  <input type="tel" matInput placeholder="Telephone" required>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Address" required></textarea>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Address 2"></textarea>
+          </mat-form-field>
+
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="City">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="State">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <mat-select placeholder="Country" required>
+                    <mat-option value="SG">Singapore</mat-option>
+                    <mat-option value="IN">India</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput maxlength="6" placeholder="Postal">
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </mat-card-content>
+
+        <mat-card-actions fxLayoutAlign="center">
+          <button mat-raised-button color="accent">Add Customer</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </form>
+
+  </div>
+
+  <div class="card-container" fxLayout="row" fxLayoutAlign="center">
+    <div class="example-form">
+      <mat-card fxFlex="800px">
+        <mat-card-header class="card highlight-card card-medium">
+          <mat-card-title align="right">Customer List</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="customerNumber">
+              <mat-header-cell *matHeaderCellDef>Customer Number</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.customerNumber}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+              <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="middleName">
+              <mat-header-cell *matHeaderCellDef>Middle Name</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.middleName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+              <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="gender">
+              <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="dateOfBirth">
+              <mat-header-cell *matHeaderCellDef>Date of Birth</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="mobileNumber">
+              <mat-header-cell *matHeaderCellDef>Mobile Number</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.mobileNumber}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="countryOfBirth">
+              <mat-header-cell *matHeaderCellDef>Country of Birth</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.countryOfBirth}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,28 @@
+server:
+  port:${SERVER_PORT:8080}
+spring:
+  application:
+    name: spring-testing-service
+  flyway:
+    locations: classpath:db/migration
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  datasource:
+    dialect: org.hibernate.dialect.MariaDB103Dialect
+    url: jdbc:mysql://${DATABASE_SERVER:localhost}:3306/${DATABASE_SERVICE:customer_service}
+    username: ${DATABASE_USER:root}
+    password: ${DATABASE_PASSWORD:root}
+    hikari:
+      idle-timeout: 20
+      connection-timeout: 250
+      connection-test-query: SELECT 1
+      disabled: false
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    com.psle.customerapp: DEBUG
+    org.hibernate: INFO
+    com.zaxxer.hikari: INFO

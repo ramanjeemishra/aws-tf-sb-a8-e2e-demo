@@ -1,0 +1,1 @@
+Alter table customers MODIFY gender VARCHAR(5);
